@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciao CIRO!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #72d0e1, #ebf0ee, #c2cbfb);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      color: #181616;
+      overflow: hidden;
+      height: 100vh;
+      position: relative;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .container {
+      text-align: center;
+      padding-top: 10%;
+    }
+
+    h1, h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 1.2rem;
+      color: #fff;
+      background: #983218;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: #f6944a;
+      transform: scale(1.1);
+    }
+
+    .image-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    img {
+      width: 300px;
+      border-radius: 20px;
+      animation: rotateMove 6s ease-in-out forwards;
+    }
+
+    @keyframes rotateMove {
+      0% {
+        transform: rotate(0deg);
+      }
+      33% {
+        transform: rotate(120deg);
+      }
+      66% {
+        transform: rotate(240deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes starFall {
+      0% { top: -50px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    .star {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: #e55c5c;
+      border-radius: 50%;
+      animation: starFall 2s linear infinite;
+      opacity: 0;
+    }
+
+    .star:nth-child(odd) {
+      animation-duration: 3s;
+    }
+
+    .star:nth-child(even) {
+      animation-duration: 2s;
+    }
+
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #ff7e5f;
+      border-radius: 50%;
+      animation: flowerFall 4s ease-in-out infinite;
+    }
+
+    .flower:nth-child(1) {
+      left: 5%;
+      background-color: #ffb6b9;
+      animation-duration: 4s;
+    }
+
+    .flower:nth-child(2) {
+      left: 15%;
+      background-color: #f7c3b6;
+      animation-duration: 4.5s;
+    }
+
+    .flower:nth-child(3) {
+      left: 25%;
+      background-color: #3482cf;
+      animation-duration: 5s;
+    }
+
+    .flower:nth-child(4) {
+      left: 35%;
+      background-color: #ad2f74;
+      animation-duration: 5.5s;
+    }
+
+    .flower:nth-child(5) {
+      left: 45%;
+      background-color: #eee3e1;
+      animation-duration: 6s;
+    }
+
+    .flower:nth-child(6) {
+      left: 55%;
+      background-color: #ffb6b9;
+      animation-duration: 6.5s;
+    }
+
+    .flower:nth-child(7) {
+      left: 65%;
+      background-color: #f7c3b6;
+      animation-duration: 7s;
+    }
+
+    .flower:nth-child(8) {
+      left: 75%;
+      background-color: #3482cf;
+      animation-duration: 7.5s;
+    }
+
+    .flower:nth-child(9) {
+      left: 85%;
+      background-color: #ad2f74;
+      animation-duration: 8s;
+    }
+
+    .flower:nth-child(10) {
+      left: 95%;
+      background-color: #eee3e1;
+      animation-duration: 8.5s;
+    }
+
+    @keyframes flowerFall {
+      0% { top: -10vh; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      h1, h2 {
+        font-size: 2rem;
+      }
+      p, button {
+        font-size: 1rem;
+      }
+      img {
+        width: 200px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-funday.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div id="part1" class="container visible">
+    <h1>🎉 Buon Compleanno! 🎉</h1>
+    <p>Rispondi alla domanda per andare avanti:</p>
+    <p><strong>Perché il pakistano ha chiamato Ny con il suo telefono?</strong></p>
+    <button onclick="checkAnswer(1)">Perché il pakistano ha paura che Ny non usa i social network</button>
+    <button onclick="checkAnswer(2)">Perché il pakistano ha paura che Ny si innamori di un altro</button>
+    <button onclick="checkAnswer(3)">Perché il telefono del pakistano non ha il Wifi</button>
+  </div>
+
+  <div id="part2" class="container hidden">
+    <h2>✨ BUON COMPLEANNO CIRO  AND I HOPE YOU'LL FIND... ✨</h2>
+    <p>Scegli un augurio speciale:</p>
+    <button onclick="showWish('🎂 HAPPINESS ALONG THE WAY ')">🎁  1</button>
+    <button onclick="showWish('🌟 KEEP YOUR SPIRITS UP ')">🎁 2</button>
+    <button onclick="showWish('💖 ENJOY EVERY SINGLE MOMENT...')">🎁  3</button>
+    <p id="wishMessage"></p>
+  </div>
+
+  <div id="part3" class="container hidden">
+    <h2>🎈 CIRO MLEM MLEM HAHAHAHAHAH 🎈</h2>
+    <div class="image-container">
+      <img src="Bản sao z6271366093106_902fd870eb0270d677dba3b954a423e1.jpg" alt="Ciro mlem mlem hahahaha">
+    </div>
+
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <script>
+    function checkAnswer(answer) {
+      const part1 = document.getElementById("part1");
+      const part2 = document.getElementById("part2");
+      if (answer === 2) {
+        alert("Ciro SEI INTELLIGENTE! Risposta corretta!");
+        part1.classList.remove("visible");
+        part1.classList.add("hidden");
+        part2.classList.remove("hidden");
+        part2.classList.add("visible");
+      } else {
+        alert("Oops! Ciro Riprova HAHAAAA.");
+      }
+    }
+
+    function showWish(wish) {
+      const wishMessage = document.getElementById("wishMessage");
+      wishMessage.textContent = wish;
+      setTimeout(() => {
+        document.getElementById("part2").classList.remove("visible");
+        document.getElementById("part2").classList.add("hidden");
+        document.getElementById("part3").classList.remove("hidden");
+        document.getElementById("part3").classList.add("visible");
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
